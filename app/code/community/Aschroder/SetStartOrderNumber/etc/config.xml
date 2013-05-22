@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+	/**
+	* @package    Aschroder_SetStartOrderNumber
+	* @author     Ashley Schroder (aschroder.com)
+	*/
+-->
+<config>
+	<modules>
+		<Aschroder_SetStartOrderNumber>
+			<version>0.3</version>
+		</Aschroder_SetStartOrderNumber>
+	</modules>
+	
+	<global>
+		<helpers>
+			<setstartordernumber><class>Aschroder_SetStartOrderNumber_Helper</class></setstartordernumber>
+		</helpers>
+		<models>
+            <setstartordernumber>
+                <class>Aschroder_SetStartOrderNumber_Model</class>
+            </setstartordernumber>
+            <eav>
+				<rewrite>
+					<entity_increment_numeric>Aschroder_SetStartOrderNumber_Model_Backend_Increment_Numeric</entity_increment_numeric>
+				</rewrite>
+			</eav>
+        </models>
+	</global>
+	
+	<admin>
+		<routers>
+			<setstartordernumber>
+				<use>admin</use>
+				<args>
+					<module>Aschroder_SetStartOrderNumber</module>
+					<frontName>setstartordernumber</frontName>
+				</args>
+			</setstartordernumber>
+		 </routers>
+	</admin>
+	
+</config>
