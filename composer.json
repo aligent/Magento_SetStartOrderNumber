@@ -1,5 +1,5 @@
 {
-    "name":"aschroder/magento_setstartordermumber",
+    "name":"aschroder/magento_setstartordernumber",
     "type":"magento-module",
     "homepage":"https://github.com/aligent/Magento_SetStartOrderNumber",
     "description":"Unofficial (but sanctioned!) mirror of Ashley Schroder's Set Custom Order Number from Magento Connect",
