@@ -1,0 +1,9 @@
+{
+    "name": "aligent/Magento_SetStartOrderNumber",
+    "type":"magento-module",
+    "homepage":"https://github.com/aligent/Magento_SetStartOrderNumber",
+    "description": "Unofficial (but sanctioned!) mirror of Ashley Schroder's Set Custom Order Number from Magento Connect",
+    "require": {
+        "magent-hackathon/magento-composer-installer":"*"
+    }
+}
