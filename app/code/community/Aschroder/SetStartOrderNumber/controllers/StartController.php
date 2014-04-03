@@ -27,10 +27,10 @@ class Aschroder_SetStartOrderNumber_StartController
 		}
 		
 		$objects = array(
-		'order' => Mage::helper('setstartordernumber')->getOrderNumber(),
-		'invoice' => Mage::helper('setstartordernumber')->getInvoiceNumber(),
-		'shipment' => Mage::helper('setstartordernumber')->getShipmentNumber(),
-		'creditmemo' => Mage::helper('setstartordernumber')->getCreditNumber());
+		'order' => Mage::helper('setstartordernumber')->getOrderNumber($storeID),
+		'invoice' => Mage::helper('setstartordernumber')->getInvoiceNumber($storeID),
+		'shipment' => Mage::helper('setstartordernumber')->getShipmentNumber($storeID),
+		'creditmemo' => Mage::helper('setstartordernumber')->getCreditNumber($storeID));
 		
 		foreach ($collection->getItems() as $item) {
 			
@@ -39,7 +39,7 @@ class Aschroder_SetStartOrderNumber_StartController
 				
 				// This is one of the entities we care about and we have a value for it.
 				$store = Mage::getModel('eav/entity_store')->loadByEntityStore($item->getEntityTypeId(), $storeID);
-				
+                $iPrefixLength=(int)strip_tags(Mage::helper('setstartordernumber')->getPrefixLength($storeID));
 				if ($store && $store->getId()) {
 					
 					// already exists - check it's lower 
@@ -47,7 +47,7 @@ class Aschroder_SetStartOrderNumber_StartController
 					if($override || $store->getIncrementLastId() < $new_number) {
 						
 						$old = $store->getIncrementLastId();
-						$store->setIncrementPrefix(substr($new_number."",0,1));
+						$store->setIncrementPrefix(substr($new_number."",0,$iPrefixLength));
 						$store->setIncrementLastId($new_number);
 						$store->save();
 						$this->_getSession()->addSuccess(
@@ -70,7 +70,7 @@ class Aschroder_SetStartOrderNumber_StartController
 					// None exists yet insert one
 					$store->setEntityTypeId($item->getEntityTypeId());
 					$store->setStoreId($storeID);
-					$store->setIncrementPrefix(substr($new_number."",0,1));
+					$store->setIncrementPrefix(substr($new_number."",0,$iPrefixLength));
 					$store->setIncrementLastId($new_number);
 					$store->save();
 					$this->_getSession()->addSuccess(
