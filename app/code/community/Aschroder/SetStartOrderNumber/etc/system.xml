@@ -82,6 +82,16 @@
                                 <show_in_website>1</show_in_website>
                                 <show_in_store>0</show_in_store>
                             </update>
+                            <prefix_length>
+                                <label>Prefix Length of Starting Numbers</label>
+                                <frontend_type>text</frontend_type>
+                                <sort_order>225</sort_order>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <show_in_store>0</show_in_store>
+                                <comment>Remember this value will be the same for Order, Invoice, Shipment and Credit Memo.<br/>
+                                    For example: ORD00000001 is your starting number, the prefix length is 3.</comment>
+                            </prefix_length>
 							<override translate="label">
 								<label>Allow me to set my increment ID's below their current values - Trust me, I know what I'm doing.</label>
 								<frontend_type>select</frontend_type>
