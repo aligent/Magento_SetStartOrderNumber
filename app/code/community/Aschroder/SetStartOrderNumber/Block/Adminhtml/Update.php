@@ -23,7 +23,7 @@ class Aschroder_SetStartOrderNumber_Block_Adminhtml_Update
         'website' => $buttonBlock->getRequest()->getParam('website')
     );
     
-	$url = Mage::helper('adminhtml')->getUrl("setstartordernumber/start/update", $params);
+	$url = Mage::helper('adminhtml')->getUrl("adminhtml/setStartOrderNumber/update", $params);
 
 	return $this->getLayout()->createBlock('adminhtml/widget_button')
                 ->setType('button')

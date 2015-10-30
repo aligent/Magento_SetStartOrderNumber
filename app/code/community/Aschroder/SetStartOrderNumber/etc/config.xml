@@ -30,14 +30,14 @@
 	
 	<admin>
 		<routers>
-			<setstartordernumber>
-				<use>admin</use>
+			<adminhtml>
 				<args>
-					<module>Aschroder_SetStartOrderNumber</module>
-					<frontName>setstartordernumber</frontName>
+					<modules>
+						<setstartordernumber after="Mage_Adminhtml">Aschroder_SetStartOrderNumber_Adminhtml</setstartordernumber>
+					</modules>
 				</args>
-			</setstartordernumber>
-		 </routers>
+			</adminhtml>
+		</routers>
 	</admin>
 	
 </config>
