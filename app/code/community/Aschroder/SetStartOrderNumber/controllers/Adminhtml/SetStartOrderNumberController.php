@@ -5,7 +5,7 @@
  *
  * @author Ashley Schroder (aschroder.com)
  */
-class Aschroder_SetStartOrderNumber_StartController
+class Aschroder_SetStartOrderNumber_Adminhtml_SetStartOrderNumberController
 	extends Mage_Adminhtml_Controller_Action {
 
 	public function indexAction() {
@@ -20,8 +20,13 @@ class Aschroder_SetStartOrderNumber_StartController
 		$override = Mage::helper('setstartordernumber')->isOverrideEnabled();
 		
 		$store = $this->getRequest()->getParam('website');
-		if (!$store) { 
-			$storeID = 1; //use default store if none was given	
+		if (!$store) {
+			//in some cases store id 1 is not present so use first non-default store in that case
+
+			//get store ids
+			$aStoreIds = array_keys(Mage::app()->getStores(false, false));
+			sort($aStoreIds);
+			$storeID = current($aStoreIds);
 		} else {
 			$storeID = Mage::app()->getWebsite($store)->getId();
 		}
